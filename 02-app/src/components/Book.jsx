@@ -3,16 +3,19 @@ import "../App.css";
 
 const bookList = [
   {
+    id: 1,
     title: "Unlocking Android",
     img: "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
     author: "Charlie Collins",
   },
   {
+    id: 2,
     title: "Android in Action, Second Edition",
     img: "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson2.jpg",
     author: "W. Frank Ableson",
   },
   {
+    id: 3,
     title: "Specification by Example",
     img: "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg",
     author: "Gojko Adzic",
@@ -20,10 +23,9 @@ const bookList = [
 ];
 
 const reactBookList = bookList.map((book) => {
-  const { img, title, author, children } = book;
   return (
     <div>
-      <Book img={img} title={title} author={author}></Book>
+      <Book {...book} key={book.id}></Book>
     </div>
   );
 });
@@ -32,9 +34,11 @@ export default function BookList() {
   return <section className="bookList">{reactBookList}</section>;
 }
 
-export function Book({ img, title, author, children }) {
+export function Book(props) {
+  const { id, img, title, author, children } = props;
   return (
     <article>
+      <h6>{id}</h6>
       <h1>{img}</h1>
       <h3>{title}</h3>
       <h4>{author}</h4>
