@@ -1,34 +1,38 @@
 import React from "react";
+import "../App.css";
 
-const img = "IMG";
-const title = "Title";
-const author = "Author";
-const forthBook = {
-  img: "4th IMG",
-  title: "4th Title",
-  author: "4th Author",
-};
+const bookList = [
+  {
+    title: "Unlocking Android",
+    img: "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+    author: "Charlie Collins",
+  },
+  {
+    title: "Android in Action, Second Edition",
+    img: "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson2.jpg",
+    author: "W. Frank Ableson",
+  },
+  {
+    title: "Specification by Example",
+    img: "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg",
+    author: "Gojko Adzic",
+  },
+];
+
+const reactBookList = bookList.map((book) => {
+  const { img, title, author, children } = book;
+  return (
+    <div>
+      <Book img={img} title={title} author={author}></Book>
+    </div>
+  );
+});
 
 export default function BookList() {
-  return (
-    <section>
-      <Book img="IMG 1" title={title} author={author}>
-        <p>This is a child</p>
-        <p>This is a second child</p>
-      </Book>
-      <Book img={img} title="Title 2" author={author} />
-      <Book img={img} title={title} />
-      <Book
-        img={forthBook.img}
-        title={forthBook.title}
-        author={forthBook.author}
-      />
-    </section>
-  );
+  return <section className="bookList">{reactBookList}</section>;
 }
 
 export function Book({ img, title, author, children }) {
-  console.log(children);
   return (
     <article>
       <h1>{img}</h1>
