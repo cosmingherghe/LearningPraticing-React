@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 
 const bookList = [
@@ -31,17 +31,78 @@ const reactBookList = bookList.map((book) => {
 });
 
 export default function BookList() {
-  return <section className="bookList">{reactBookList}</section>;
+  return (
+    <section className="bookList">
+      <EventExamples />
+      {reactBookList}
+    </section>
+  );
 }
+
+function getBookById(id) {
+  const book = bookList.find((book) => book.id === id);
+  console.log(book);
+}
+
+const EventExamples = () => {
+  const [exampleInput, setExampleInput] = useState("");
+  function getExampleInput(e) {
+    setExampleInput(e.target.value);
+  }
+  function getBook() {
+    console.log(exampleInput);
+    const book = bookList.find((book) => book.id === exampleInput);
+    console.log(book);
+    return book;
+  }
+
+  const handleFormInput = (e) => {
+    console.log(e);
+    // e.target - element
+    console.log(`Input Name : ${e.target}`);
+    console.log(`Input Name : ${e.target.name}`);
+    console.log(`Input Value : ${e.target.value}`);
+  };
+  const handleButtonClick = () => {
+    console.log(exampleInput);
+  };
+  const handleFormSubmission = (e) => {
+    e.preventDefault();
+    console.log("Form submitted");
+  };
+  return (
+    <section>
+      <form onSubmit={handleFormSubmission}>
+        <input
+          type="text"
+          name="example"
+          onChange={getExampleInput}
+          style={{ margin: "1rem 0" }}
+        />
+        <button type="submit">Submit</button>
+      </form>
+      <button type="button" onClick={getBook}>
+        click me
+      </button>
+    </section>
+  );
+};
 
 export function Book(props) {
   const { id, img, title, author, children } = props;
+  function getThisBook() {
+    const book = bookList.find((book) => book.id === id);
+    console.log(book);
+  }
   return (
     <article>
       <h6>{id}</h6>
       <h1>{img}</h1>
       <h3>{title}</h3>
       <h4>{author}</h4>
+      <button type="button" onClick={getThisBook}>
+        Get Book
+      </button>
       {children}
     </article>
   );
