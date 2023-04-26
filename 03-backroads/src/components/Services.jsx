@@ -1,11 +1,9 @@
+import SectionTitle from "./SectionTitle";
+
 export default function SectionServices() {
   return (
     <section className="section services" id="services">
-      <div className="section-title">
-        <h2>
-          our <span>services</span>
-        </h2>
-      </div>
+      <SectionTitle title="out" subTitle="services" />
       <div className="section-center services-center">
         <article className="service">
           <span className="service-icon">
