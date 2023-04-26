@@ -1,4 +1,4 @@
-import { pageLinks } from "../data";
+import { pageLinks, socialMediaLinks } from "../data";
 import logo from "../images/logo.svg";
 
 export default function NavBar() {
@@ -24,33 +24,20 @@ export default function NavBar() {
         </ul>
 
         <ul className="nav-icons">
-          <li>
-            <a
-              href="https://www.twitter.com"
-              target="_blank"
-              className="nav-icon"
-            >
-              <i className="fab fa-facebook"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.twitter.com"
-              target="_blank"
-              className="nav-icon"
-            >
-              <i className="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.twitter.com"
-              target="_blank"
-              className="nav-icon"
-            >
-              <i className="fab fa-squarespace"></i>
-            </a>
-          </li>
+          {socialMediaLinks.map((link) => {
+            return (
+              <li>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener"
+                  className="nav-icon"
+                >
+                  <i className={link.text}></i>
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </nav>
