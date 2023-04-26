@@ -7,7 +7,3 @@ export default function SectionTitle({ title, subTitle }) {
     </div>
   );
 }
-
-//Todo
-// -> Services map
-// -> Tours
