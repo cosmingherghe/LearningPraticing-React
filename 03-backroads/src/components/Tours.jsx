@@ -1,12 +1,10 @@
+import SectionTitle from "./SectionTitle";
+
 export default function Tours() {
   return (
     <div>
       <section className="section" id="tours">
-        <div className="section-title">
-          <h2>
-            featured <span>tours</span>
-          </h2>
-        </div>
+        <SectionTitle title="featured" subTitle="tours" />
 
         <div className="section-center featured-center">
           <article className="tour-card">
